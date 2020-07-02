@@ -589,6 +589,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public int totalSavingsofADay(String username, String date){
         int sum=0;
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        if(totalDailyExpenses(username,date)==0)
+            return fetchUserDetails(username).getAnnualIncome()/365;
 
         final String calculateSum="SELECT "
                 + "("+USERS_TABLE_NAME+"."+USERS_COLUMN_ANNUAL_INCOME+"/365)- SUM("+DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_AMOUNT+")"
@@ -716,5 +718,54 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public int totalSavingsTilldate(String username) throws ParseException {
         return totalIncomeTillDate(username)-totalExpensesTilldate(username);
+    }
+
+    public int deviationFromCumulativeTarget(String username) throws ParseException {
+        int deviation=0;
+        int noOfdaysSinceGoalStart=noOfDaysSinceGoalStarted(username);
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String fetchDeviation=" SELECT "
+                +noOfdaysSinceGoalStart+"*("+USERS_TABLE_NAME+"."+USERS_COLUMN_MAXIMUM_DAILY_EXPENSE+")-"+totalExpensesTilldate(username)
+                + " FROM "+ USERS_TABLE_NAME
+                + " WHERE " + USERS_TABLE_NAME+ "." +USERS_COLUMN_USERNAME+ " = '" + username +"'";
+        Cursor cursor=sqLiteDatabase.rawQuery(fetchDeviation,null);
+        if(cursor.moveToFirst()){
+            deviation=cursor.getInt(0);
+        }
+        return deviation;
+    }
+
+    public int totalnoOfSavedExpenses(String username){
+        int count=0;
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String fetchSavedExpensesCount=" SELECT "
+                +"COUNT("+SAVED_EXPENSES_COLUMN_EXPENSE_ID+")"
+                + " FROM "+ SAVED_EXPENSES_TABLE_NAME
+                + " WHERE " + SAVED_EXPENSES_TABLE_NAME+ "." +SAVED_EXPENSES_COLUMN_USER+ " = '" + username +"'";
+        Cursor cursor=sqLiteDatabase.rawQuery(fetchSavedExpensesCount,null);
+        if(cursor.moveToFirst()){
+            count=cursor.getInt(0);
+        }
+        return count;
+    }
+
+    public int totalDailyExpenses(String username, String date){
+        int count=0;
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String fetchDailyExpensesCount=" SELECT "
+                +" COUNT("+DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_EXPENSE_ID+")"
+                +" FROM " + DAILY_EXPENSES_TABLE_NAME
+                +" , " + SAVED_EXPENSES_TABLE_NAME
+                + " WHERE "+ SAVED_EXPENSES_TABLE_NAME +"."+SAVED_EXPENSES_COLUMN_EXPENSE_ID
+                + " = " + DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_SAVED_EXPENSE_ID
+                + " AND " + SAVED_EXPENSES_TABLE_NAME+ "." +SAVED_EXPENSES_COLUMN_USER+ " = '" + username +"'"
+                + " AND "+DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_CREATED_DATE+"='"+date+"'";
+
+        Cursor cursor=sqLiteDatabase.rawQuery(fetchDailyExpensesCount,null);
+        if(cursor.moveToFirst())
+        {
+            count=cursor.getInt(0);
+        }
+        return count;
     }
 }

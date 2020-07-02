@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/totalDailyExpense"
         android:layout_width="0dp"
-        android:layout_height="26dp"
+        android:layout_height="wrap_content"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
