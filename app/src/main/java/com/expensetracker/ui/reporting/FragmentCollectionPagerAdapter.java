@@ -1,3 +1,7 @@
+/**
+ * Fragment Collection Pager Adapter is used for rendering multiple fragments inside a fragment
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.reporting;
 
 import android.os.Bundle;

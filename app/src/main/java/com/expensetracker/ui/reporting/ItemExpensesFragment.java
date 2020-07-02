@@ -1,3 +1,8 @@
+/**
+ * Item Expenses Fragment for displaying pie chart of items based on given date range
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
+
 package com.expensetracker.ui.reporting;
 
 import android.app.DatePickerDialog;

@@ -1,3 +1,7 @@
+/**
+ * User Object for storing user details
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker;
 
 public class User {

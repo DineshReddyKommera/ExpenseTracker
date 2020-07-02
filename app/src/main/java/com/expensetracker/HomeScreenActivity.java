@@ -1,4 +1,7 @@
-/* Home Screen Activity which is triggered on successful login*/
+/**
+ * Home Screen Activity which is triggered on successful login
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 
 package com.expensetracker;
 
@@ -8,12 +11,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -74,14 +75,6 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
     }
-
-    // If required use for some fragment
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_screen, menu);
-        return true;
-    }*/
 
     @Override
     public boolean onSupportNavigateUp() {

@@ -1,3 +1,7 @@
+/**
+ *  Daily Expenses Fragment which is used for rendering bar chart of daily expense for given date range
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.reporting;
 
 import android.content.Context;

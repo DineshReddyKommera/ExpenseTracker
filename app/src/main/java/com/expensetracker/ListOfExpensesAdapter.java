@@ -1,3 +1,7 @@
+/**
+ * ListOfExpensesAdapter is used for displaying the list view
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker;
 
 import android.content.Context;
@@ -10,14 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.expensetracker.ui.home.AddDailyExpenseActivity;
-
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ListOfExpensesAdapter extends RecyclerView.Adapter<ListOfExpensesAdapter.ViewHolder>

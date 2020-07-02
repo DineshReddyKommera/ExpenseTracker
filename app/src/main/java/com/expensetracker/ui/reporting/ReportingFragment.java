@@ -1,4 +1,7 @@
-/* Home Fragment which displays saved preferences and user daily expenses*/
+/**
+ * Reporting fragment is used to provide different types of reports
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 
 package com.expensetracker.ui.reporting;
 
@@ -7,14 +10,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.expensetracker.R;

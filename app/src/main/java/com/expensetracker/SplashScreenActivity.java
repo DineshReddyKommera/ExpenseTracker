@@ -1,11 +1,12 @@
-/*  A Splash Activity which displays the splash screen for expense tracker application*/
-
+/**
+ * A Splash Activity which displays the splash screen for expense tracker application
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 

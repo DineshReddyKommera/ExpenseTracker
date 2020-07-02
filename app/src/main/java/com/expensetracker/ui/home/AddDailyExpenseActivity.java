@@ -1,3 +1,7 @@
+/**
+ * Add Daily Expense Activity is used for adding daily expense
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,4 +1,7 @@
-/* Home Fragment which displays saved preferences and user daily expenses*/
+/**
+ * Home Fragment which displays saved preferences and user daily expenses
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 
 package com.expensetracker.ui.home;
 

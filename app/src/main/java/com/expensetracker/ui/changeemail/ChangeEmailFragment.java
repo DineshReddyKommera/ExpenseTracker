@@ -1,4 +1,7 @@
-/* Fragment which is used to change email of the user */
+/**
+ * Fragment which is used to change email of the user
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 
 package com.expensetracker.ui.changeemail;
 

@@ -1,3 +1,7 @@
+/**
+ * Chart Data Unit object model is used for as generating charts
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker;
 
 public class ChartDataUnit {

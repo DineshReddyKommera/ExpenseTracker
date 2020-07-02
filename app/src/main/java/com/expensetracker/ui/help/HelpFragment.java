@@ -1,4 +1,7 @@
-/* Help Fragment which helps the user to contact team */
+/**
+ * Help Fragment which helps the user to contact team
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.help;
 
 import android.os.Bundle;

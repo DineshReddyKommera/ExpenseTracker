@@ -1,5 +1,7 @@
-/* Fragment which provides helps the user for adding daily expenses */
-
+/**
+ * Settings fragment is used to display saved expense list and also takes annual income,max daily limit and desired saving as inputs
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.settings;
 
 import android.content.Intent;

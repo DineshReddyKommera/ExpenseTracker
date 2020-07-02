@@ -1,3 +1,7 @@
+/**
+ *  Daily Savings Fragment which is used for rendering bar chart of daily savings
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.reporting;
 
 import android.content.Context;

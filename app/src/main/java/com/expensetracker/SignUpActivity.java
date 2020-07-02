@@ -1,14 +1,14 @@
-/* A signup activity which registers the user  */
-
+/**
+ * A signup activity which registers the user
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -21,9 +21,6 @@ import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.basgeekball.awesomevalidation.utility.custom.SimpleCustomValidation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -31,7 +28,6 @@ public class SignUpActivity extends AppCompatActivity {
     private Button mBtnSignUpNow;
     Context context;
     private AwesomeValidation awesomeValidation;
-    private HashMap<String, String> usersMap = new HashMap<>();
     String username = "", password = "",email="",phone="",checkUsr="";
     private Boolean mUserExits=false;
     DBHelper mDBHelper;
@@ -79,8 +75,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void validateUserName() {
-        Intent intent = getIntent();
-        usersMap = (HashMap<String, String>) intent.getSerializableExtra("usersMap");
         username = mTxtUsrName.getText().toString().trim();
         // Custom Validator to check whether the username is unique or not
         awesomeValidation.addValidation(this, R.id.text_usrsignup, new SimpleCustomValidation() {

@@ -1,4 +1,7 @@
-/* A SQLite Helper class for performing CRUD operations */
+/**
+ * A SQLite Helper class for performing CRUD operations
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 
 package com.expensetracker;
 
@@ -183,7 +186,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Change @param previousPassword to @param newPassword of
+     * Change @param previousEmail to @param newEmail of
      * @param username
      * @return true if email has been changed and vice versa
      */

@@ -1,3 +1,7 @@
+/**
+ * Add Expense Activity is used for adding expense types
+ * @Author Abhinay Kacham, Dinesh Reddy Kommera
+ */
 package com.expensetracker.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
