@@ -25,6 +25,7 @@ import com.expensetracker.DBHelper;
 import com.expensetracker.HomeScreenActivity;
 import com.expensetracker.ListOfExpensesAdapter;
 import com.expensetracker.R;
+import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,6 +35,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * This class extends Fragment
+ * is home screen of the application
+ * where user can check his total savings through progress bar
+ * cumulative savings status
+ * and add new daily savings
+ */
 public class HomeFragment extends Fragment{
 
     String date;
@@ -50,6 +58,7 @@ public class HomeFragment extends Fragment{
     DBHelper mDBHelper;
     ProgressBar progressBar;
     String username;
+    CalendarConstraints.Builder constraintsBuilder;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -103,7 +112,9 @@ public class HomeFragment extends Fragment{
                 dailyExpensesRecyclerView.setAdapter(new ListOfExpensesAdapter((HomeScreenActivity) getActivity()
                         ,dailyExpense,datePicked));
 
-                String dailySum="Savings of Selected Date("+datePicked+"): "+ mDBHelper.totalSavingsofADay(username,datePicked)+"\n";
+                String dailySum="";
+                if(mDBHelper.totalSavingsofADay(username,datePicked)!=0)
+                    dailySum="Savings of Selected Date("+date+"): "+ mDBHelper.totalSavingsofADay(username,date)+"\n";
                 int deviation=0;
                 try {
                     deviation=mDBHelper.deviationFromCumulativeTarget(username);
@@ -136,7 +147,10 @@ public class HomeFragment extends Fragment{
             e.printStackTrace();
         }
         dailyExpensesRecyclerView.setAdapter(new ListOfExpensesAdapter((HomeScreenActivity) getActivity(),dailyExpense,date));
-        String dailySum="Savings of Selected Date("+date+"): "+ mDBHelper.totalSavingsofADay(username,date)+"\n";
+
+        String dailySum="";
+                if(mDBHelper.totalSavingsofADay(username,date)!=0)
+                    dailySum="Savings of Selected Date("+date+"): "+ mDBHelper.totalSavingsofADay(username,date)+"\n";
         if(deviation>0){
             dailySum+="\nYou are ahead of your cumulative savings target by "+deviation +". Hurray!!"+"\n";
         }

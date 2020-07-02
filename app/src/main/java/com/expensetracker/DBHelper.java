@@ -589,8 +589,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public int totalSavingsofADay(String username, String date){
         int sum=0;
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
-        if(totalDailyExpenses(username,date)==0)
-            return fetchUserDetails(username).getAnnualIncome()/365;
+//        if(totalDailyExpenses(username,date)==0)
+//            return fetchUserDetails(username).getAnnualIncome()/365;
 
         final String calculateSum="SELECT "
                 + "("+USERS_TABLE_NAME+"."+USERS_COLUMN_ANNUAL_INCOME+"/365)- SUM("+DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_AMOUNT+")"
@@ -767,5 +767,24 @@ public class DBHelper extends SQLiteOpenHelper {
             count=cursor.getInt(0);
         }
         return count;
+    }
+
+    public String goalStartDate(String username){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String startDate="";
+        final String goalStartDay="SELECT "
+                + DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_CREATED_DATE
+                + " FROM "+ DAILY_EXPENSES_TABLE_NAME
+                + " , " + SAVED_EXPENSES_TABLE_NAME
+                + " WHERE " + SAVED_EXPENSES_TABLE_NAME+ "." +SAVED_EXPENSES_COLUMN_USER+ " = '" + username +"'"
+                + " AND " + SAVED_EXPENSES_TABLE_NAME +"."+SAVED_EXPENSES_COLUMN_EXPENSE_ID
+                + " = " +DAILY_EXPENSES_TABLE_NAME+"."+DAILY_EXPENSES_COLUMN_SAVED_EXPENSE_ID
+                + " ORDER BY " + DAILY_EXPENSES_COLUMN_EXPENSE_ID;
+
+        Cursor cursor=sqLiteDatabase.rawQuery(goalStartDay,null);
+        if(cursor.moveToFirst()) {
+            startDate = cursor.getString(0);
+        }
+        return startDate;
     }
 }
