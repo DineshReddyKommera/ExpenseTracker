@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment{
         date=dateFormat.format(Calendar.getInstance().getTime());
         datePicker=root.findViewById(R.id.choose_expense_from_date);
         dailyExpenseStatus=root.findViewById(R.id.totalDailyExpense);
-        dateFormatForCalender=new SimpleDateFormat("dd MMM yyyy");
+        dateFormatForCalender=new SimpleDateFormat("MMM dd, yyyy");
 
         sharedPreferences=getActivity().getSharedPreferences("expensetracker", Context.MODE_PRIVATE);
         username=sharedPreferences.getString("username","");
