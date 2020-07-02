@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment{
 
                 String dailySum="";
                 if(mDBHelper.totalSavingsofADay(username,datePicked)!=0)
-                    dailySum="Savings of Selected Date("+date+"): "+ mDBHelper.totalSavingsofADay(username,date)+"\n";
+                    dailySum="Savings of Selected Date("+datePicked+"): "+ mDBHelper.totalSavingsofADay(username,datePicked)+"\n";
                 int deviation=0;
                 try {
                     deviation=mDBHelper.deviationFromCumulativeTarget(username);
